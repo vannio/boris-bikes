@@ -37,4 +37,12 @@ describe DockingStation do
     end
   end
 
+  describe '#dock' do
+    it 'raises an error if the bike capacity is full and you try and dock a bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect{subject.dock(bike)}.to raise_error "There are too many bikes - unable to dock"
+    end 
+  end
+
 end

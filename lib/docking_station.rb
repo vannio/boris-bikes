@@ -5,6 +5,7 @@ class DockingStation
   attr_reader :bike
 
   def dock(bike)
+  	fail "There are too many bikes - unable to dock" if @bike
     @bike = bike
   end
 
