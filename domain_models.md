@@ -29,5 +29,5 @@ Objects  | Messages
 Person  |
 Bike  | find_by_docking_station
 Bike  | see_condition
-Bike  | release_bike
 Bike  | using_bike
+DockingStation | release_bike
