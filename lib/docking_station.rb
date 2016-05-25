@@ -1,18 +1,21 @@
-require_relative "bike"
+
+require_relative 'bike'
+
 
 class DockingStation
 
   attr_reader :bike
 
-  def dock(bike)
-  	fail "There are too many bikes - unable to dock" if @bike
+  def release_bike
+    Bike.new
+  end
+
+  def dock bike
     @bike = bike
   end
 
-  def release_bike
-    fail "No bikes available :(" unless @bike
+  def bike
     @bike
   end
-
 
 end
