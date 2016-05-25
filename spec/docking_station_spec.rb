@@ -16,5 +16,8 @@ describe DockingStation do
   	expect(subject.bike).to eq bike
   end
 
+  it "should not release a bike if empty and raise an error" do
+    expect{subject.release_bike}.to raise_error("Nothing to release")
+  end
  end
 
