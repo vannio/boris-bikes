@@ -13,7 +13,7 @@ describe DockingStation do
   it "should show a bike that has been docked" do
   	bike = Bike.new
   	subject.dock(bike)
-  	expect(subject.bike).to eq bike
+  	expect(subject.bikes.last).to eq bike
   end
 
   it "should not release a bike if empty and raise an error" do
@@ -21,9 +21,12 @@ describe DockingStation do
   end
 
   it "should fail to dock a bike if the docking station is full" do
-    bike = Bike.new
-    subject.dock(bike)
-    bike2 = Bike.new
-    expect{subject.dock(bike2)}.to raise_error("Docking station is full")
+    20.times { subject.dock(Bike.new) }
+    expect{ subject.dock(Bike.new) }.to raise_error("Docking station is full")
   end
+
+  it "should accept 20 bikes into the docking station" do
+    expect{ 20.times { subject.dock(Bike.new) }}.not_to raise_error
+  end
+
  end
