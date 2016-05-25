@@ -7,20 +7,17 @@ class DockingStation
   attr_reader :bike
 
   def release_bike
-    # Bike.new
     unless @bike
       raise "Nothing to release"
-    else
-      @bike
     end
+    @bike
   end
 
   def dock bike
+    if @bike
+      raise "Docking station is full"
+    end
     @bike = bike
   end
-
-  # def bike
-  #   @bike
-  # end
 
 end
