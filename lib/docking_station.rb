@@ -12,6 +12,10 @@ class DockingStation
     @bike= bike
   end
 
+  def no_bikes
+    raise "sorry, no bikes"
+  end
+
   def bike
     @bike
   end
