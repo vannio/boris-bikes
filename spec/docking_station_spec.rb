@@ -12,8 +12,12 @@ describe DockingStation do
 
   describe '#release_bike' do
       it 'release a bike' do
-        expect(subject.release_bike).to be_nil
-        expect { raise "sorry, no bikes" }.to raise_error ("sorry, no bikes")
+        expect{ subject.release_bike }.to raise_error("sorry, no bikes")
+      end
+
+      it "doesn't release a bike if it's broken" do
+        subject.docking_bike(Bike.new, false)
+        expect(subject.release_bike).to eq "Bike is broken!"
       end
   end
 
@@ -24,8 +28,11 @@ describe DockingStation do
       end
 
       it "reports a bike's status when docked" do
-        expect(subject.docking_bike(Bike.new, false)).to eq "Docked bike is not working"
-        expect(subject.docking_bike(Bike.new, true)).to eq "Docked bike is working fine!"
+        subject.docking_bike(Bike.new, false)
+        expect(subject.bikes.last.working?).to be_falsey
+
+        subject.docking_bike(Bike.new, true)
+        expect(subject.bikes.last.working?).to be_truthy
       end
   end
 
