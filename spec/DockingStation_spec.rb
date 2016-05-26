@@ -40,6 +40,7 @@ describe 'DEFAULT_CAPACITY' do
 	it 'gives a DEFAULT_CAPACITY of 20' do
 		expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
 	end
+
 # it "returns true if dock is full" do
 # 	#bike = Bike.new
 # 	expect (DockingStation.full?).to eq false
