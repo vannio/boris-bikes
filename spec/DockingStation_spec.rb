@@ -33,6 +33,11 @@ describe '#dock' do
 		20.times {subject.dock(Bike.new)}
 		expect {subject.dock(Bike.new)}.to raise_error 'Error: Docking Station Full'
 	end
+# it "returns true if dock is full" do 
+# 	#bike = Bike.new
+# 	expect (DockingStation.full?).to eq false
+	#20.times {bike = Bike.new}
+	#expect {subject.full?}.to eq true
 end
 end
 end
