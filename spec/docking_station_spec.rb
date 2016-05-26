@@ -5,6 +5,11 @@ describe DockingStation do
   it { is_expected.to respond_to (:release_bike) }
   it { is_expected.to respond_to(:docking_bike).with(1).argument }
 
+  it 'should set a capacity if given argument otherwise default to 20' do
+    expect(DockingStation.new(50).capacity).to eq 50 
+    expect(DockingStation.new.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
   describe '#release_bike' do
       it 'release a bike' do
         expect(subject.release_bike).to be_nil
@@ -19,4 +24,7 @@ describe DockingStation do
         expect {raise "sorry, dock is full"}.to raise_error ("sorry, dock is full")
       end
   end
+
+
+
 end
