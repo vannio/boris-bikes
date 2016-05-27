@@ -21,6 +21,10 @@ class DockingStation
     @bikes.pop if @bikes.last.working?
   end
 
+  def release_broken_bikes
+    @bikes.pop unless @bikes.last.working?
+  end
+
   private
 
   def full?
