@@ -28,7 +28,7 @@ class DockingStation
   end
 
   def release_broken_bikes
-    @bikes_broken.pop
+    @bikes_broken.pop(@bikes_broken.count)
   end
 
   private

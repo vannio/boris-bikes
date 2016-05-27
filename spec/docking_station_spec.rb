@@ -26,8 +26,16 @@ describe DockingStation do
     it 'releases broken bikes to a van' do
       bike = double(:bike, :working? => false)
       subject.dock(bike)
-      expect(subject.release_broken_bikes).to eq bike
+      expect(subject.release_broken_bikes).to eq [bike]
     end
+
+    it 'empties broken bikes after being released' do
+      bike = double(:bike, :working? => false)
+      subject.dock(bike)
+      subject.release_broken_bikes
+      expect(subject.bikes_broken).to eq []
+    end
+    
   end
 
   describe '#dock' do
