@@ -1,25 +1,19 @@
-require 'van'
+  require 'van'
 
 describe Van do
   describe '#load_bikes' do
+    let(:bike) { double(:bike, :working? => false) }
+
     it 'loads an array of bikes' do
-      bikes = [double(:bike, :working? => false)]
+      bikes = [bike, bike]
       expect(subject.load_bikes(bikes)).to eq bikes
+    end
+
+    it 'releases an array of bikes' do
+      bikes = [bike, bike]
+      subject.load_bikes(bikes)
+      expect(subject.unload_bikes).to eq bikes
     end
   end
 
-  # describe '#deliver_bikes' do
-  #   it 'delivers bikes to a destination' do
-  #     bikes = [double(:bike, :working? => false)]
-  #     subject.load_bikes(bikes)
-  #     expect(subject.deliver_bikes("London")).to eq bikes
-  #   end
-  #
-  #   it 'delivers bikes to a garage' do
-  #     bikes = [double(:bike, :working? => false)]
-  #     van = double(:van, :cargo => bikes)
-  #     garage = double(:garage, :inventory => [])
-  #     expect(subject.deliver_bikes(garage)).to eq bikes
-  #   end
-  # end
 end

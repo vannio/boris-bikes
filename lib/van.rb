@@ -1,16 +1,17 @@
 class Van
-
-  attr_reader :cargo
+  attr_reader :bikes
 
   def initialize
-    @cargo = []
+    @bikes = []
   end
 
   def load_bikes(bikes)
-    @cargo = bikes
+    @bikes = bikes
   end
 
-  # def deliver_bikes(destination)
-    # @cargo
-  # end
+  def unload_bikes
+    result = @bikes.clone
+    @bikes = []
+    result
+  end
 end
